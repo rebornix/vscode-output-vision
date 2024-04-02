@@ -1,0 +1,60 @@
+{
+  "name": "vscode-output-vision",
+  "displayName": "vscode-output-vision",
+  "description": "Bridge the gap between visual outputs and textual understanding",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "AI",
+    "Notebooks"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-output-vision.explain",
+        "title": "Explain the output",
+        "category": "Notebook Output Vision"
+      },
+      {
+        "command": "vscode-output-vision.clearKey",
+        "title": "Clear API Key",
+        "category": "Notebook Output Vision"
+      }
+    ],
+    "menus": {
+      "notebook/cell/title": [
+        {
+          "command": "vscode-output-vision.explain",
+          "when": "notebookType == 'jupyter-notebook'"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "dependencies": {
+    "openai": "^4.32.0",
+    "@google/generative-ai": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.87.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
